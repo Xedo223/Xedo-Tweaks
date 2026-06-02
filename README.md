@@ -7,6 +7,12 @@ Xedo Tweaks is a batch tweaking script that optimizes your system to provide the
 <p align="center">
   <img src="https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/Imagens/123.png?raw=true" alt="Product Name Screen Shot" />
 </p>
+<p align="center">
+Seleção de Linguagem (Português-Inglês) --- Language Selection (English-Portuguese)
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/Imagens/1234.png?raw=true" alt="Product Name Screen Shot" />
+</p>
 
 > [!NOTE]
 > **Funciona apenas em Windows 11 24h2 ou superior!**
