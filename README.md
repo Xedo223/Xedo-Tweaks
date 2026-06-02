@@ -1,18 +1,17 @@
-<p align="center">
 # Xedo Tweaks
-</p>
-<p align="center">
-Seleção de Idioma [Português] e [Inglês] --- Language Selection [Portuguese] and [English]
-</p>
 
-Xedo Tweaks é um script de ajustes em lote que otimiza seu sistema para fornecer a melhor experiência de jogo possível. É gratuito e de código aberto e funciona no Windows 11!
+Xedo Tweaks é um script de ajustes em lote que otimiza seu sistema para fornecer a melhor experiência de jogo possível. É gratuito e de código aberto e funciona no Windows 11 24h2 ou superior!
 
-Xedo Tweaks is a batch tweaking script that optimizes your system to provide the best gaming experience possible. It is free and open-source, and works on Windows 11!
+Xedo Tweaks is a batch tweaking script that optimizes your system to provide the best gaming experience possible. It is free and open-source, and works on Windows 11 24h2 or higher!
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/Imagens/123.png?raw=true" alt="Product Name Screen Shot" />
 </p>
 
-> [!NOTE]  
+> [!NOTE]
+> **Funciona apenas em Windows 11 24h2 ou superior!**
+> >**Only works on Windows 11 24h2 or higher!**
+> 
 > **Se você tiver problemas, verifique sua instalação ou tente reinstalar.**
 > > **Não posso ser responsabilizado por quaisquer possíveis problemas do sistema.**
 > 
