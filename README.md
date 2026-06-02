@@ -24,7 +24,7 @@ Xedo Tweaks is a batch tweaking script that optimizes your system to provide the
  2. Clique com o botão direito em Xedo Tweaks.bat e selecione Executar como administrador
  3. Siga as instruções na tela para selecionar os ajustes desejados
  4. Aguarde enquanto o script aplica suas seleções (isso pode levar alguns instantes)
-
+--------
  1. [Download the latest release](https://github.com/Xedo223/Xedo-Tweaks/releases/latest/)
  2. Right-click on Xedo Tweaks.bat and select Run as administrator
  3. Follow the on-screen instructions to select the tweaks you want
