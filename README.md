@@ -7,6 +7,9 @@ Xedo Tweaks is a batch tweaking script that optimizes your system to provide the
 </p>
 
 > [!NOTE]  
+> **Se você tiver problemas, verifique sua instalação ou tente reinstalar.**
+> > **Não posso ser responsabilizado por quaisquer possíveis problemas do sistema.**
+> > 
 > **If you experience issues, please verify your installation or try reinstalling.**
 > **I cannot be held responsible for any potential system issues.**
 
