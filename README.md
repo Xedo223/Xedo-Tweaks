@@ -14,13 +14,20 @@ Xedo Tweaks is a batch tweaking script that optimizes your system to provide the
 > >**I cannot be held responsible for any potential system issues.**
 
 
-## 🔨 Installation
+## 🔨 Instalação / Installation
+ 1. [Baixe a versão mais recente](https://github.com/Xedo223/Xedo-Tweaks/releases/latest/)
+ 2. Clique com o botão direito em Xedo Tweaks.bat e selecione Executar como administrador
+ 3. Siga as instruções na tela para selecionar os ajustes desejados
+ 4. Aguarde enquanto o script aplica suas seleções (isso pode levar alguns instantes)
+
  1. [Download the latest release](https://github.com/Xedo223/Xedo-Tweaks/releases/latest/)
  2. Right-click on Xedo Tweaks.bat and select Run as administrator
  3. Follow the on-screen instructions to select the tweaks you want
  4. Wait while the script applies your selections (this may take a few moments)
 
-## 📖 License
+## 📖 License / Licença
+
+É distribuído sob a licença do MIT. Consulte `LICENÇA` para obter mais informações.
 
 It is distributed under the MIT license. See `LICENSE` for more information.
 
