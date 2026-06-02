@@ -1,2 +1,22 @@
 # Xedo-Tweaks
 Xedo Tweaks is a batch tweaking script that optimizes your system to provide the best gaming experience possible. It is free and open-source, and works on Windows 11!
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/Imagens/123.png?raw=true" alt="Product Name Screen Shot" />
+</p>
+
+> [!NOTE]  
+> **If you experience issues, please verify your installation or try reinstalling.**
+> **I cannot be held responsible for any potential system issues.**
+
+
+## 🔨 Installation
+ 1. [Download the latest release](https://github.com/Xedo223/Xedo-Tweaks/releases/latest/)
+ 2. Right-click on Xedo Tweaks.bat and select Run as administrator
+ 3. Follow the on-screen instructions to select the tweaks you want
+ 4. Wait while the script applies your selections (this may take a few moments)
+
+## 📖 License
+
+It is distributed under the MIT license. See `LICENSE` for more information.
+
+[product-screenshot]: https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/Imagens/123.png
