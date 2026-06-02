@@ -12,7 +12,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 }
 
 $build = [System.Environment]::OSVersion.Version.Build
-if ($build -lt 26100) {
+if ($build -lt 26090) {
     Write-Host ""
     Write-Host "  [!] Xedo Tweaks requires Windows 11 26100 or later." -ForegroundColor Red
     Write-Host "      Detected build: $build" -ForegroundColor Red
