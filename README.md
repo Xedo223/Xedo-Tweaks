@@ -24,6 +24,14 @@ Seleção de Linguagem (Português-Inglês) --- Language Selection (English-Port
 > **If you experience issues, please verify your installation or try reinstalling.**
 > >**I cannot be held responsible for any potential system issues.**
 
+## 🔧 Comando de lançamento - Launch Command
+
+#### Lançamento mais recente - Newest Release
+
+```powershell
+irm https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/main/launch.ps1 | iex
+```
+
 
 ## 🔨 Instalação / Installation
  1. [Baixe a versão mais recente](https://github.com/Xedo223/Xedo-Tweaks/releases/latest/)
