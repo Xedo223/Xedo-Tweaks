@@ -1304,8 +1304,9 @@ echo                             %y%║                                         
 %pt%echo                             %y%║               %gd%[%w%2%gd%] %y%Ativar FSO (Jogos modernos)                ║
 %en%echo                             %y%║               %gd%[%w%2%gd%] %y%Enable FSO (Modern Games)                  ║
 echo                             %y%║                                                              ║
-echo                             %y%║                                                              ║
-echo                             %y%╚══════════════════════════════╩═══════════════════════════════╝
+%pt%echo                             %y%║               %gd%[%w%3%gd%] %y%Configuração MPO / HAGS                    ║
+%en%echo                             %y%║               %gd%[%w%3%gd%] %y%MPO / HAGS Configuration                   ║
+echo                             %y%╚══════════════════════════════════════════════════════════════╝
 echo.
 %pt%echo                                       %gd%[%w%0%gd%] %gd%Voltar ao Menu   %gd%[%w%X%gd%] %r%Sair do aplicativo
 %en%echo                                       %gd%[%w%0%gd%] %gd%Back to Main   %gd%[%w%X%gd%] %r%Exit Application
@@ -1313,6 +1314,7 @@ echo.
 set /p M="%gd%Choose / Escolha »%u% "
 if "%M%"=="1" goto FSE
 if "%M%"=="2" goto FSO
+if "%M%"=="3" goto MPO
 if "%M%"=="0" goto menu
 if "%M%"=="X" goto Destruct
 if "%M%"=="x" goto Destruct
@@ -1395,6 +1397,60 @@ echo.
 pause >nul
 cls
 goto menu
+
+
+:MPO
+cls
+call :SetupConsole
+echo.
+    echo.                  %y%╔═══════════════════════════════════════════════════════════════════════════════╗
+    echo.                  ║                                     MPO / HAGS                                ║
+    echo.                  ╚═══════════════════════════════════════════════════════════════════════════════╝%u%
+echo.
+echo.
+%pt%echo %a% • Desativar MPO e HAGS podem resolver ou reduzir micro travadas e tela piscando!%u%
+%pt%echo %gn%   (+)Melhora a estabilidade geral do FPS e resolve engasgos crônicos de tela.%u%
+%en%echo %a% • Disabling MPO and HAGS can resolve or reduce micro freezes and screen flickering!%u%
+%en%echo %gn%   (+)Improves overall FPS stability and resolves chronic screen stuttering.%u%
+%pt%echo %r%⚠️ AVISO: Não recomendo desativar caso esteja usando Frame Generation (DLSS/FSR).%u%
+%en%echo %r%⚠️ WARNING: I do not recommend disabling if you are using Frame Generation (DLSS/FSR).%u%
+echo.
+%pt%choice /C YN /M "%y%Desativar MPO / HAGS?%r% Aperte [N] para manter ativados (Y/N)%u%"
+%en%choice /C YN /M "%y%Disable MPO / HAGS?%r% Press [N] to keep activated (Y/N)%u%"
+if errorlevel 2 goto NMPO
+
+%pt%echo %r% - Desativando MPO / HAGS...%u%
+%en%echo %r% - Disabling MPO / HAGS...%u%
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DisableOverlays" /t REG_DWORD /d 1 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d 1 /f
+timeout /t 2 /nobreak > NUL
+echo.
+echo.                              %gd%╔═════════════════════════════════════════════════════════╗
+%pt%echo.                              %gd%║     %w%   Pressione qualquer tecla para continuar... ➡️    %gd%║
+%en%echo.                              %gd%║     %w%   Press any key to continue... ➡️                  %gd%║
+echo.                              %gd%╚═════════════════════════════════════════════════════════╝   
+echo.
+pause >nul
+cls
+goto menu
+
+:NMPO
+
+%pt%echo %gn% - Ativando MPO / HAGS...%u%
+%en%echo %gn% - Enabling MPO / HAGS...%u%
+reg delete "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DisableOverlays" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d 2 /f
+timeout /t 2 /nobreak > NUL
+echo.
+echo.                              %gd%╔═════════════════════════════════════════════════════════╗
+%pt%echo.                              %gd%║     %w%   Pressione qualquer tecla para continuar... ➡️    %gd%║
+%en%echo.                              %gd%║     %w%   Press any key to continue... ➡️                  %gd%║
+echo.                              %gd%╚═════════════════════════════════════════════════════════╝   
+echo.
+pause >nul
+cls
+goto menu
+
 
 :more
 cls
