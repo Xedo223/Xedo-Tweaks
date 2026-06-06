@@ -695,18 +695,18 @@ timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Dynamic Tick%u%
-bcdedit /set Disabledynamictick yes >nul 2>&1
+bcdedit /set Disabledynamictick yes
 timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disable High Precision Event Timer (HPET)%u%
-bcdedit /deletevalue useplatformclock  >nul 2>&1
+bcdedit /deletevalue useplatformclock
 timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Synthetic Timers%u%
-bcdedit /set useplatformtick no >nul 2>&1
-bcdedit /set tscsyncpolicy Enhanced >nul 2>&1
+bcdedit /set useplatformtick no
+bcdedit /set tscsyncpolicy Enhanced
 timeout /t 1 /nobreak > NUL
 
 echo.
@@ -851,18 +851,27 @@ echo %a% Import Exm Free Power Plan V8%u%
 powercfg -import "C:\xedo\Free_Power_Plan_V8.pow" 11111112-2223-3334-4445-555555555555
 timeout /t 1 /nobreak > nul
 powercfg /setactive 11111112-2223-3334-4445-555555555555
-%pt%REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo" /v "MUIVerb" /t REG_SZ /d "Plano Energia Gamer" /f
-%en%REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo" /v "MUIVerb" /t REG_SZ /d "Power Plan Gamer" /f
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo" /v "SubCommands" /t REG_SZ /d "" /f
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
-%pt%REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo\shell\Extremo" /v "MUIVerb" /t REG_SZ /d "Plano Energia EXM" /f
-%pt%REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo\shell\Extremo2" /v "MUIVerb" /t REG_SZ /d "Opções de Energia" /f
-%en%REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo\shell\Extremo" /v "MUIVerb" /t REG_SZ /d "EXM Power Plan" /f
-%en%REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo\shell\Extremo2" /v "MUIVerb" /t REG_SZ /d "Power Options" /f
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo\shell\Extremo" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo\shell\Extremo2" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo\shell\Extremo\command" /ve /t REG_SZ /d "powercfg /setactive 11111112-2223-3334-4445-555555555555" /f
-REG ADD "HKEY_CLASSES_ROOT\Directory\Background\shell\Xedo\shell\Extremo2\command" /ve /t REG_SZ /d "explorer.exe shell:::{025A5937-A6BE-4686-A844-36FE4BEC8B6D}" /f
+%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo" /v "MUIVerb" /t REG_SZ /d "Plano De Energia" /f
+%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo" /v "MUIVerb" /t REG_SZ /d "Power Plan" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo" /v "SubCommands" /t REG_SZ /d "" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
+%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo1" /v "MUIVerb" /t REG_SZ /d "Economia de Energia" /f
+%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo2" /v "MUIVerb" /t REG_SZ /d "Equilibrado" /f
+%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3" /v "MUIVerb" /t REG_SZ /d "Gamer EXM" /f
+%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "MUIVerb" /t REG_SZ /d "Opções de Energia" /f
+%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo1" /v "MUIVerb" /t REG_SZ /d "Energy Saving" /f
+%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo2" /v "MUIVerb" /t REG_SZ /d "Balanced" /f
+%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3" /v "MUIVerb" /t REG_SZ /d "Gamer EXM" /f
+%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "MUIVerb" /t REG_SZ /d "Power Options" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo1" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo2" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "CommandFlags" /t REG_DWORD /d 32 /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo1\command" /ve /t REG_SZ /d "powercfg.exe /setactive a1841308-3541-4fab-bc81-f71556f20b4a" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo2\command" /ve /t REG_SZ /d "powercfg.exe /setactive 381b4222-f694-41f0-9685-ff5bb260df2e" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3\command" /ve /t REG_SZ /d "powercfg.exe /setactive 11111112-2223-3334-4445-555555555555" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4\command" /ve /t REG_SZ /d "control.exe powercfg.cpl" /f
 
 timeout /t 1 /nobreak > NUL
 
@@ -1027,8 +1036,8 @@ echo.
 pause >nul
 cls
 chcp 437 >nul 2>&1
-%pt%powershell "&  {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('Sistema Otimizado Com Sucesso, pressione "OK" para continuar', 'Xedo Tweaks', 'Ok', [System.Windows.Forms.MessageBoxIcon]::Information);}"
-%en%powershell "&  {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('Successfully Optimized System, Press "OK" To continue', 'Xedo Tweaks', 'Ok', [System.Windows.Forms.MessageBoxIcon]::Information);}"
+%pt%powershell "&  {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('Sistema Otimizado Com Sucesso, pressione "OK" para reiniciar', 'Xedo Tweaks', 'Ok', [System.Windows.Forms.MessageBoxIcon]::Information);}"
+%en%powershell "&  {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('Successfully Optimized System, Press "OK" To restart', 'Xedo Tweaks', 'Ok', [System.Windows.Forms.MessageBoxIcon]::Information);}"
 shutdown /r /f /t 0
 
 
@@ -1050,18 +1059,18 @@ if errorlevel 2 goto menu
 
 echo.
 echo %a% - Disabling Dynamic Tick%u%
-bcdedit /set Disabledynamictick yes >nul 2>&1
+bcdedit /set Disabledynamictick yes
 timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disable High Precision Event Timer (HPET)%u%
-bcdedit /deletevalue useplatformclock  >nul 2>&1
+bcdedit /deletevalue useplatformclock
 timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Synthetic Timers%u%
-bcdedit /set useplatformtick no >nul 2>&1
-bcdedit /set tscsyncpolicy Enhanced >nul 2>&1
+bcdedit /set useplatformtick no
+bcdedit /set tscsyncpolicy Enhanced
 timeout /t 1 /nobreak > NUL
 
 echo.
