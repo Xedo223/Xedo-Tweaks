@@ -625,37 +625,45 @@ Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVir
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d 0 /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d 0 /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "RequirePlatformSecurityFeatures" /t REG_DWORD /d 0 /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling HVCIMAT%u%
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HVCIMATRequired" /t REG_DWORD /d 0 /f 
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HypervisorEnforcedCodeIntegrity" /t REG_DWORD /d 0 /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling ExceptionChainValidation and MitigationOptions%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DisableExceptionChainValidation" /t REG_DWORD /d 1 /f 
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Sehop%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "KernelSEHOPEnabled" /t REG_DWORD /d 0 /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling CFG%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableCfg" /t REG_DWORD /d 0 /f 
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Protection Mode%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" /v "ProtectionMode" /t REG_DWORD /d 0 /f 
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Spectre/Meltdown CPU Mitigations%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d 3 /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d 3 /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Hyper-V%u%
 bcdedit /set hypervisorlaunchtype off
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Fast Startup%u%
@@ -683,6 +691,7 @@ timeout /t 1 /nobreak > NUL
 echo.
 echo %a% - Network Throttoling Index%u%
 Reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "NetworkThrottlingIndex" /t REG_DWORD /d "4294967295" /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Dynamic Tick%u%
@@ -698,6 +707,7 @@ echo.
 echo %a% - Disabling Synthetic Timers%u%
 bcdedit /set useplatformtick no >nul 2>&1
 bcdedit /set tscsyncpolicy Enhanced >nul 2>&1
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Setting GlobalTimerResolutionRequests%u%
@@ -796,18 +806,22 @@ timeout /t 1 /nobreak > nul
 echo.
 echo %a% - Disabling Filter Keys %g%(the filterkeys app is completely useless placebo, dont use it)%u%
 reg add "HKCU\Control Panel\Accessibility\Keyboard Response" /v "Flags" /t REG_SZ /d "122" /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Toggle Keys%u%
 reg add "HKCU\Control Panel\Accessibility\ToggleKeys" /v "Flags" /t REG_SZ /d "58" /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Sticky Keys%u%
 reg add "HKCU\Control Panel\Accessibility\StickyKeys" /v "Flags" /t REG_SZ /d "506" /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Disabling Mouse Keys%u%
 reg add "HKCU\Control Panel\Accessibility\MouseKeys" /v "Flags" /t REG_SZ /d 0 /f
+timeout /t 1 /nobreak > NUL
 timeout /t 1 /nobreak > NUL
 
 echo.
@@ -815,14 +829,17 @@ echo %a% - Disabling Mouse Acceleration%u%
 reg add "HKCU\Control Panel\Mouse" /v "MouseSpeed" /t REG_SZ /d 0 /f
 reg add "HKCU\Control Panel\Mouse" /v "MouseThreshold1" /t REG_SZ /d 0 /f
 reg add "HKCU\Control Panel\Mouse" /v "MouseThreshold2" /t REG_SZ /d 0 /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Enabling 1:1 Pixel Mouse Movements%u%
 reg add "HKCU\Control Panel\Mouse" /v "MouseSensitivity" /t REG_SZ /d "10" /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Reducing Keyboard Repeat Delay%u%
 reg add "HKCU\Control Panel\Keyboard" /v "KeyboardDelay" /t REG_SZ /d 0 /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Increasing Keyboard Repeat Rate%u%
@@ -947,6 +964,7 @@ echo.
 echo %a% - Enabling Game Mode %u%
 reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d 1 /f
 reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d 1 /f
+timeout /t 1 /nobreak > NUL
 
 :: --- NETWORK, POWER AND CACHE CLEARING SETTINGS ---
 echo.
@@ -994,6 +1012,7 @@ del /s /f /q "%USERPROFILE%\AppData\Local\AMD\VkCache\*.*" 2>nul
 del /s /f /q "%USERPROFILE%\AppData\LocalLow\AMD\DxCache\*.*" 2>nul
 del /s /f /q "%USERPROFILE%\AppData\Local\Intel\ShaderCache\*.*" 2>nul
 del /s /f /q "%USERPROFILE%\AppData\LocalLow\Intel\ShaderCache\*.*" 2>nul
+timeout /t 1 /nobreak > NUL
 echo.
 echo.
 cls
@@ -1043,6 +1062,7 @@ echo.
 echo %a% - Disabling Synthetic Timers%u%
 bcdedit /set useplatformtick no >nul 2>&1
 bcdedit /set tscsyncpolicy Enhanced >nul 2>&1
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %a% - Setting GlobalTimerResolutionRequests%u%
@@ -1126,6 +1146,7 @@ del /s /f /q "%USERPROFILE%\AppData\Local\AMD\VkCache\*.*" 2>nul
 del /s /f /q "%USERPROFILE%\AppData\LocalLow\AMD\DxCache\*.*" 2>nul
 del /s /f /q "%USERPROFILE%\AppData\Local\Intel\ShaderCache\*.*" 2>nul
 del /s /f /q "%USERPROFILE%\AppData\LocalLow\Intel\ShaderCache\*.*" 2>nul
+timeout /t 1 /nobreak > NUL
 echo.
 echo.
 cls
@@ -1195,36 +1216,44 @@ Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVir
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d 0 /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d 0 /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "RequirePlatformSecurityFeatures" /t REG_DWORD /d 0 /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %gn% - Disabling HVCIMAT%u%
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HVCIMATRequired" /t REG_DWORD /d 0 /f 
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HypervisorEnforcedCodeIntegrity" /t REG_DWORD /d 0 /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %gn% - Disabling ExceptionChainValidation and MitigationOptions%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DisableExceptionChainValidation" /t REG_DWORD /d 1 /f 
 Reg.exe delete "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %gn% - Disabling Sehop%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "KernelSEHOPEnabled" /t REG_DWORD /d 0 /f
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %gn% - Disabling CFG%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableCfg" /t REG_DWORD /d 0 /f 
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %gn% - Disabling Protection Mode%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" /v "ProtectionMode" /t REG_DWORD /d 0 /f 
+timeout /t 1 /nobreak > NUL
 
 echo.
 echo %gn% - Disabling Spectre/Meltdown CPU Mitigations%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d 3 /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d 3 /f
+timeout /t 1 /nobreak > NUL
 
 echo %a% - Disabling Hyper-V%u%
 bcdedit /set hypervisorlaunchtype off
+timeout /t 1 /nobreak > NUL
 echo.
 echo.
 cls
@@ -1263,27 +1292,34 @@ Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "EnableVir
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity" /v "Enabled" /t REG_DWORD /d "1" /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "EnableVirtualizationBasedSecurity" /t REG_DWORD /d 1 /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard" /v "RequirePlatformSecurityFeatures" /t REG_DWORD /d 1 /f
+timeout /t 1 /nobreak > NUL
 
 echo %gn% - Enabling HVCIMAT%b%
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HVCIMATRequired" /t REG_DWORD /d "1" /f 
 Reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DeviceGuard" /v "HypervisorEnforcedCodeIntegrity" /t REG_DWORD /d 1 /f
+timeout /t 1 /nobreak > NUL
 
 echo %gn% - Enabling ExceptionChainValidation%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "DisableExceptionChainValidation" /t REG_DWORD /d "0" /f 
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "MitigationOptions" /t REG_BINARY /d "ffffffffffffffff" /f
+timeout /t 1 /nobreak > NUL
 
 echo %gn% - Enabling Sehop%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "KernelSEHOPEnabled" /t REG_DWORD /d "1" /f
+timeout /t 1 /nobreak > NUL
 
 echo %gn% - Enabling CFG%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "EnableCfg" /t REG_DWORD /d "1" /f 
+timeout /t 1 /nobreak > NUL
 
 echo %gn% - Enabling Protection Mode%b%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager" /v "ProtectionMode" /t REG_DWORD /d "1" /f 
+timeout /t 1 /nobreak > NUL
 
 echo %gn% - Enabling Spectre/Meltdown CPU Mitigations%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverride" /t REG_DWORD /d 0 /f
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v "FeatureSettingsOverrideMask" /t REG_DWORD /d 3 /f
+timeout /t 1 /nobreak > NUL
 
 bcdedit /deletevalue hypervisorlaunchtype
 echo.
