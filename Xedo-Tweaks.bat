@@ -1421,7 +1421,7 @@ if errorlevel 2 goto NMPO
 
 %pt%echo %r% - Desativando MPO / HAGS...%u%
 %en%echo %r% - Disabling MPO / HAGS...%u%
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DisableOverlays" /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /t REG_DWORD /d "00000005" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d 1 /f
 timeout /t 2 /nobreak > NUL
 echo.
@@ -1438,7 +1438,7 @@ goto menu
 
 %pt%echo %gn% - Ativando MPO / HAGS...%u%
 %en%echo %gn% - Enabling MPO / HAGS...%u%
-reg delete "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "DisableOverlays" /f
+reg delete "HKLM\SOFTWARE\Microsoft\Windows\Dwm" /v "OverlayTestMode" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v "HwSchMode" /t REG_DWORD /d 2 /f
 timeout /t 2 /nobreak > NUL
 echo.
