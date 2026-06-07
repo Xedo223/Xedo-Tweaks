@@ -563,8 +563,8 @@ if "%M%"=="3" goto 3
 if "%M%"=="4" goto 4
 if "%M%"=="5" goto 5
 if "%M%"=="6" goto 6
-if "%M%"=="222" goto 222
 if "%M%"=="7" goto More
+if "%M%"=="god" goto god
 if "%M%"=="X" goto Destruct
 if "%M%"=="x" goto Destruct
 cls
@@ -1028,7 +1028,8 @@ net stop UsoSvc
 del /S /F /Q "%WINDIR%\SoftwareDistribution" 2>nul
 timeout /t 1 /nobreak > NUL
 
-choice /C YN /M "%gd%Limpar o cache da placa de video? (Y/N)%u%"
+%pt%choice /C YN /M "%gd%Limpar o cache da placa de video? (Y/N)%u%"
+%en%choice /C YN /M "%gd%Clear the graphics card cache? (Y/N)%u%"
 if errorlevel 2 goto menu
 
 :: Caches de Placa de Vídeo (NVIDIA/AMD/Intel)
