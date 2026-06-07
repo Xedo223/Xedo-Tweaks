@@ -1,6 +1,6 @@
 @echo off
 mode 120,30
-set version=1.02
+set version=1.03
 title Xedo Tweaks - %version%
 
 :: Color Codes
@@ -586,7 +586,7 @@ echo.
     %en%echo.                  ╚═══════════════════════════════════════════════════════════════════════════════╝%u%
 echo.
 %pt%echo %a%APLICANDO OTIMIZACOES SEGURAS DE DESEMPENHO E LATENCIA:%u%
-
+%pt%echo %gd% • APLICANDO PRIORIDADE DE INTERRUPÇÃO GPU MSI EM ALTA%u%
 %pt%echo %gd% • DESATIVANDO A SEGURANÇA BASEADA EM VIRTUALIZAÇÃO%u%
 %pt%echo %gd% • OTIMIZAÇÃO TIMERESOLUTION E BCDEDIT%u%
 %pt%echo %gd% • CONFIGURACOES DE REDE, ENERGIA E LIMPEZA DE CACHE%u%
@@ -597,6 +597,7 @@ echo.
 %pt%echo %gd% • OTIMIZAÇÃO DE MOUSE E TECLADO%u%
 %pt%echo %gd% • BLOQUEIO DE ANÚNCIOS NATIVOS E NOTIFICAÇOES INVASIVAS%u%
 %en%echo %a%APPLYING SECURE PERFORMANCE AND LATENCY OPTIMIZATIONS:%u%
+%en%echo %gd% • APPLYING MSI GPU INTERRUPTION PRIORITY ON HIGH%u%
 %en%echo %gd% • DISABLING VIRTUALIZATIONBASEDSECURITY%u%
 %en%echo %gd% • TIMERESOLUTION AND BCDEDIT OPTIMIZATION%u%
 %en%echo %gd% • NETWORK, POWER AND CACHE CLEARING SETTINGS%u%
@@ -618,6 +619,25 @@ echo.
 %en%echo.
 %en%choice /C YN /M "%gd%Continue with automated setup? (Y/N)%u%"
 if errorlevel 2 goto menu
+
+echo.
+%pt%echo %a% - Detectando a GPU ativa e aplicando prioridade de interrupção MSI em ALTA%u%
+%en%echo %a% - Detecting an active GPU and applying MSI interrupt priority to HIGH%u%
+chcp 437 >nul
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+    "$Gpus = Get-CimInstance Win32_VideoController | Where-Object { $_.PNPDeviceID -match 'PCI\\VEN_' };" ^
+    "if (-not $Gpus) {" ^
+    "    Write-Host '[WARNING] No physical GPU detected automatically.' -ForegroundColor Yellow" ^
+    "} else {" ^
+    "    foreach ($Gpu in $Gpus) {" ^
+    "    Write-Host 'GPU:' $Gpu.Name -ForegroundColor Green;" ^
+    "        $RegPath = 'HKLM:\SYSTEM\CurrentControlSet\Enum\' + $Gpu.PNPDeviceID + '\Device Parameters\Interrupt Management\Affinity Policy';" ^
+    "        if (-not (Test-Path $RegPath)) { New-Item -Path $RegPath -Force | Out-Null };" ^
+    "        New-ItemProperty -Path $RegPath -Name 'DevicePriority' -Value 3 -PropertyType DWord -Force | Out-Null;" ^
+    "    Write-Host '  -> [SUCESSO][SUCCESS] Prioridade definida . Priority set.' -ForegroundColor Green" ^
+    "    }" ^
+    "}"
+chcp 65001 >nul
 
 echo.
 echo %a% - Disabling VirtualizationBasedSecurity%u%
