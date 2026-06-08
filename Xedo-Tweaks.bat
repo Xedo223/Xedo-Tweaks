@@ -1,6 +1,6 @@
 @echo off
 mode 120,30
-set version=1.03
+set version=1.04
 title Xedo Tweaks - %version%
 
 :: Color Codes
@@ -549,7 +549,7 @@ echo.
 %pt%echo                  %gd%[%w%4%gd%]%gn% Desativar VBS / Mitigations (+FPS)     %gd%[%w%5%gd%]%y% Otimização Tela Cheia     %gd%[%w%6%gd%]%r% Backup
 %en%echo                  %gd%[%w%4%gd%]%gn% Disable VBS / Mitigations (+FPS)     %gd%[%w%5%gd%]%y% Full Screen Optimization     %gd%[%w%6%gd%]%r% Backup
 echo.
-echo                                                         %gd%[%w%7%gd%]%l% Info%u%
+echo                                                %gd%[%w%7%gd%]%l% Info%u%     %gd%[%w%god%gd%]%a% Winhance APP%u%
 echo.
 echo.
 %pt%echo                                                      %gd%[ %r%X para fechar %gd%]%u%
@@ -585,7 +585,8 @@ echo.
     %en%echo.                  ║                         AUTOMATED PERFORMANCE SETTING                         ║
     %en%echo.                  ╚═══════════════════════════════════════════════════════════════════════════════╝%u%
 echo.
-%pt%echo %a%APLICANDO OTIMIZACOES SEGURAS DE DESEMPENHO E LATENCIA:%u%
+echo.
+%pt%echo %a%:: APLICANDO OTIMIZACOES SEGURAS DE DESEMPENHO E LATENCIA:%u%
 %pt%echo %gd% • APLICANDO PRIORIDADE DE INTERRUPÇÃO GPU MSI EM ALTA%u%
 %pt%echo %gd% • DESATIVANDO A SEGURANÇA BASEADA EM VIRTUALIZAÇÃO%u%
 %pt%echo %gd% • OTIMIZAÇÃO TIMERESOLUTION E BCDEDIT%u%
@@ -596,7 +597,7 @@ echo.
 %pt%echo %gd% • GERENCIAMENTO E ALOCAÇÃO DE PROCESSADOR%u%
 %pt%echo %gd% • OTIMIZAÇÃO DE MOUSE E TECLADO%u%
 %pt%echo %gd% • BLOQUEIO DE ANÚNCIOS NATIVOS E NOTIFICAÇOES INVASIVAS%u%
-%en%echo %a%APPLYING SECURE PERFORMANCE AND LATENCY OPTIMIZATIONS:%u%
+%en%echo %a%:: APPLYING SECURE PERFORMANCE AND LATENCY OPTIMIZATIONS:%u%
 %en%echo %gd% • APPLYING MSI GPU INTERRUPTION PRIORITY ON HIGH%u%
 %en%echo %gd% • DISABLING VIRTUALIZATIONBASEDSECURITY%u%
 %en%echo %gd% • TIMERESOLUTION AND BCDEDIT OPTIMIZATION%u%
@@ -981,7 +982,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "D
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_TrackDocs" /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_TrackProgs" /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "IconsOnly" /t REG_DWORD /d 1 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowInfoTip" /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowInfoTip" /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ThumbnailLivePreviewHoverDelay" /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DontShowTypeCube" /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DisableThumbnailCache" /t REG_DWORD /d 1 /f
@@ -1030,7 +1031,7 @@ timeout /t 1 /nobreak > NUL
 
 %pt%choice /C YN /M "%gd%Limpar o cache da placa de video? (Y/N)%u%"
 %en%choice /C YN /M "%gd%Clear the graphics card cache? (Y/N)%u%"
-if errorlevel 2 goto menu
+if errorlevel 2 goto end
 
 :: Caches de Placa de Vídeo (NVIDIA/AMD/Intel)
 del /s /f /q "%USERPROFILE%\AppData\LocalLow\NVIDIA\PerDriverVersion\DXCache\*.*" 2>nul
@@ -1045,6 +1046,7 @@ del /s /f /q "%USERPROFILE%\AppData\LocalLow\Intel\ShaderCache\*.*" 2>nul
 timeout /t 1 /nobreak > NUL
 echo.
 echo.
+:end
 cls
 call :SetupConsole
 echo.
@@ -1164,7 +1166,7 @@ timeout /t 1 /nobreak > NUL
 
 %pt%choice /C YN /M "%gd%Limpar o cache da placa de video? (Y/N)%u%"
 %en%choice /C YN /M "%gd%Clear the video card cache? (Y/N)%u%"
-if errorlevel 2 goto menu
+if errorlevel 2 goto end2
 
 :: Caches de Placa de Vídeo (NVIDIA/AMD/Intel)
 del /s /f /q "%USERPROFILE%\AppData\LocalLow\NVIDIA\PerDriverVersion\DXCache\*.*" 2>nul
@@ -1179,6 +1181,7 @@ del /s /f /q "%USERPROFILE%\AppData\LocalLow\Intel\ShaderCache\*.*" 2>nul
 timeout /t 1 /nobreak > NUL
 echo.
 echo.
+:end2
 cls
 call :SetupConsole
 echo.
@@ -1495,6 +1498,7 @@ echo.
 %pt%echo %r%⚠️ AVISO: Não recomendo desativar caso esteja usando Frame Generation (DLSS/FSR).%u%
 %en%echo %r%⚠️ WARNING: I do not recommend disabling if you are using Frame Generation (DLSS/FSR).%u%
 echo.
+echo.
 %pt%choice /C YN /M "%y%Desativar MPO / HAGS?%r% Aperte [N] para manter ativados (Y/N)%u%"
 %en%choice /C YN /M "%y%Disable MPO / HAGS?%r% Press [N] to keep activated (Y/N)%u%"
 if errorlevel 2 goto NMPO
@@ -1568,6 +1572,40 @@ echo.
 pause >nul
 cls
 goto menu
+
+
+:god
+cls
+call :SetupConsole
+echo.
+echo.
+    echo.                  %a%╔═══════════════════════════════════════════════════════════════════════════════╗
+    echo.                  ║                        The Windows Enhancement Utility                        ║
+    echo.                  ╚═══════════════════════════════════════════════════════════════════════════════╝%u%
+echo.
+echo.
+%pt%echo                    %gn%▌ Crédito para memstechtips %w%:: https://github.com/memstechtips/Winhance ::
+%pt%echo.
+%pt%echo        %p% - Aplicativo poderoso projetado para otimizar, personalizar e aprimorar sua experiência no Windows. -%u%
+%pt%echo.
+%en%echo                    %gn%▌ Credit to memstechtips %w%:: https://github.com/memstechtips/Winhance ::
+%en%echo.
+%en%echo                %p% - Powerful app designed to optimize, customize and enhance your Windows experience. -%u%
+%en%echo.
+echo           --------------------------------------------------------------------------------------------------
+echo.
+%pt%echo              %gd%:: Aprimore sua experiência com o Windows desbloqueando, otimizando e personalizando    ::
+%pt%echo              %gd%:: seu sistema sem esforço, proporcionando mais controle sobre o desempenho do Windows. ::%u%
+%en%echo                   %gd%:: Enhance your Windows experience by effortlessly debloating, optimizing and  ::
+%en%echo                   %gd%:: customizing your system, giving you more control over how Windows performs. ::%u%
+echo.
+echo.
+%pt%choice /C YN /M "%y%Iniciar Aplicativo Winhance? (Y/N)%u%"
+%en%choice /C YN /M "%y%Start Winhance App? (Y/N)%u%"
+if errorlevel 2 goto menu
+
+chcp 437 >nul 2>&1
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm "https://get.winhance.net" | iex"
 
 
 :Destruct
