@@ -549,7 +549,7 @@ echo.
 %pt%echo                  %gd%[%w%4%gd%]%gn% Desativar VBS / Mitigations (+FPS)     %gd%[%w%5%gd%]%y% Otimização Tela Cheia     %gd%[%w%6%gd%]%r% Backup
 %en%echo                  %gd%[%w%4%gd%]%gn% Disable VBS / Mitigations (+FPS)     %gd%[%w%5%gd%]%y% Full Screen Optimization     %gd%[%w%6%gd%]%r% Backup
 echo.
-echo                                                %gd%[%w%7%gd%]%l% Info%u%     %gd%[%w%god%gd%]%a% Winhance APP%u%
+echo                                                %gd%[%w%7%gd%]%l% Info%u%     %gd%[%w%GOD%gd%]%a% Winhance APP%u%
 echo.
 echo.
 %pt%echo                                                      %gd%[ %r%X para fechar %gd%]%u%
@@ -565,6 +565,7 @@ if "%M%"=="5" goto 5
 if "%M%"=="6" goto 6
 if "%M%"=="7" goto More
 if "%M%"=="god" goto god
+if "%M%"=="GOD" goto god
 if "%M%"=="X" goto Destruct
 if "%M%"=="x" goto Destruct
 cls
@@ -981,7 +982,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "T
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DisallowShaking" /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_TrackDocs" /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "Start_TrackProgs" /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "IconsOnly" /t REG_DWORD /d 1 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "IconsOnly" /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ShowInfoTip" /t REG_DWORD /d 1 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "ThumbnailLivePreviewHoverDelay" /t REG_DWORD /d 0 /f
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "DontShowTypeCube" /t REG_DWORD /d 1 /f
