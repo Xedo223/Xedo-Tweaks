@@ -707,7 +707,6 @@ timeout /t 1 /nobreak > NUL
 echo.
 echo %a% - Disable Prefetch and superfetch%u%
 Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f
-Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnableSuperfetch" /t REG_DWORD /d "0" /f
 timeout /t 1 /nobreak > NUL
 
 echo.
@@ -723,6 +722,8 @@ timeout /t 1 /nobreak > NUL
 echo.
 echo %a% - Disable High Precision Event Timer (HPET)%u%
 bcdedit /deletevalue useplatformclock
+bcdedit /set useplatformclock no
+pnputil /disable-device /deviceid "ACPI\PNP0103"
 timeout /t 1 /nobreak > NUL
 
 echo.
@@ -872,28 +873,36 @@ echo.
 echo %a% Import Exm Free Power Plan V8%u%
 powercfg -import "C:\xedo\Free_Power_Plan_V8.pow" 11111112-2223-3334-4445-555555555555
 timeout /t 1 /nobreak > nul
-powercfg /setactive 11111112-2223-3334-4445-555555555555
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+timeout /t 1 /nobreak > nul
+powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\75b0ae3f-bce0-45a7-8c89-c9611c25e100" /v Attributes /t REG_DWORD /d 2 /f
+timeout /t 1 /nobreak > nul
 %pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo" /v "MUIVerb" /t REG_SZ /d "Plano De Energia" /f
 %en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo" /v "MUIVerb" /t REG_SZ /d "Power Plan" /f
 REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo" /v "SubCommands" /t REG_SZ /d "" /f
 REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
 %pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo1" /v "MUIVerb" /t REG_SZ /d "Economia de Energia" /f
 %pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo2" /v "MUIVerb" /t REG_SZ /d "Equilibrado" /f
-%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3" /v "MUIVerb" /t REG_SZ /d "Gamer EXM" /f
-%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "MUIVerb" /t REG_SZ /d "Opções de Energia" /f
+%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3" /v "MUIVerb" /t REG_SZ /d "Gamer" /f
+%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "MUIVerb" /t REG_SZ /d "Desempenho Máximo" /f
+%pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo5" /v "MUIVerb" /t REG_SZ /d "Opções de Energia" /f
 %en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo1" /v "MUIVerb" /t REG_SZ /d "Energy Saving" /f
 %en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo2" /v "MUIVerb" /t REG_SZ /d "Balanced" /f
-%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3" /v "MUIVerb" /t REG_SZ /d "Gamer EXM" /f
-%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "MUIVerb" /t REG_SZ /d "Power Options" /f
+%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3" /v "MUIVerb" /t REG_SZ /d "Gamer" /f
+%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "MUIVerb" /t REG_SZ /d "Ultimate Performance" /f
+%en%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo5" /v "MUIVerb" /t REG_SZ /d "Power Options" /f
 REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo1" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
 REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo2" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
 REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
 REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
-REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4" /v "CommandFlags" /t REG_DWORD /d 32 /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo5" /v "Icon" /t REG_SZ /d "powercpl.dll" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo5" /v "CommandFlags" /t REG_DWORD /d 32 /f
 REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo1\command" /ve /t REG_SZ /d "powercfg.exe /setactive a1841308-3541-4fab-bc81-f71556f20b4a" /f
 REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo2\command" /ve /t REG_SZ /d "powercfg.exe /setactive 381b4222-f694-41f0-9685-ff5bb260df2e" /f
 REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo3\command" /ve /t REG_SZ /d "powercfg.exe /setactive 11111112-2223-3334-4445-555555555555" /f
-REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4\command" /ve /t REG_SZ /d "control.exe powercfg.cpl" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo4\command" /ve /t REG_SZ /d "powercfg.exe /setactive e9a42b02-d5df-448d-aa00-03f14749eb61" /f
+REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo\shell\Extremo5\command" /ve /t REG_SZ /d "control.exe powercfg.cpl" /f
 
 timeout /t 1 /nobreak > NUL
 
@@ -1003,7 +1012,6 @@ echo %a% - Optimizing network buffers and hardware power...%u%
 netsh interface tcp set global heuristics=disabled
 netsh int tcp set global rss=enabled
 netsh int tcp set global autotuninglevel=normal
-powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 ipconfig /flushdns
 taskkill /f /im explorer.exe
 del /f /s /q "%LocalAppData%\Microsoft\DirectXShaderCache\*" 2>nul
@@ -1089,6 +1097,8 @@ timeout /t 1 /nobreak > NUL
 echo.
 echo %a% - Disable High Precision Event Timer (HPET)%u%
 bcdedit /deletevalue useplatformclock
+bcdedit /set useplatformclock no
+pnputil /disable-device /deviceid "ACPI\PNP0103"
 timeout /t 1 /nobreak > NUL
 
 echo.
