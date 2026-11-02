@@ -1,6 +1,6 @@
 @echo off
 mode 120,30
-set version=1.04
+set version=1.05
 title Xedo Tweaks - %version%
 
 :: Color Codes
@@ -331,10 +331,13 @@ goto download
 if not exist "C:\SetTimerResolution.exe" (
 goto download
 )
-if not exist "C:\xedo\Free_NVPI_V10.nip" (
+if not exist "C:\xedo\OpenShellSetup.exe" (
 goto download
 )
-if not exist "C:\xedo\Nvidia_Porfile_Inspector_2.4.0.27.exe" (
+if not exist "C:\xedo\prolasso.ini" (
+goto download
+)
+if not exist "C:\xedo\processlassosetup64.exe" (
 goto download
 )
 if not exist "C:\xedo\backup" (
@@ -349,8 +352,8 @@ chcp 437 >nul 2>&1
 %pt%powershell "&  {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('Recursos nao encontrados ou desatualizados, pressione "OK" para baixa-los', 'Xedo Tweaks', 'Ok', [System.Windows.Forms.MessageBoxIcon]::Information);}"
 %en%powershell "&  {Add-Type -AssemblyName System.Windows.Forms; [System.Windows.Forms.MessageBox]::Show('Resources Not found or out of date, Press "OK" To download them', 'Xedo Tweaks', 'Ok', [System.Windows.Forms.MessageBoxIcon]::Information);}"
 chcp 65001 >nul 2>&1
-::Downloading power plan, nvidia profile inspector, NVPI config
-::making exm folder
+::Downloading power plan, Process Lasso, Process Lasso Profile
+::making xedo folder
 echo.
 echo.
 echo.
@@ -377,16 +380,16 @@ echo.                             %p%██║  ██║███████�
 echo.                             %p%╚═╝  ╚═╝╚══════╝╚═════╝  ╚════╝  ╚═════╝ ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚═════╝ %u%
 echo.
 chcp 65001 >nul 2>&1
-%pt%echo. %w%- Baixando o plano de energia Winhance... %g%(Parte dos recursos utilizados pela ferramenta. %u%
+%pt%echo. %w%- Baixando o Open Shell Menu... %g%(Parte dos recursos utilizados pela ferramenta. %u%
 %pt%echo. %g%Você pode encontrá-los na pasta C:\xedo, todos eles são arquivos confiáveis ​​usados ​​por milhares de pessoas) %u%
-%en%echo. %w%- Downloading the Winhance Plan... %g%(Part of the Resources Used by the tool. %u%
+%en%echo. %w%- Downloading the Open Shell Menu... %g%(Part of the Resources Used by the tool. %u%
 %en%echo. %g%You can find them in the C:\xedo folder, they are all trusted files used by thousands of people) %u%
 echo.
 echo [======                       20.5%                         ]
 echo.
 chcp 437 >nul 2>&1
-curl -g -k -L -# -o "C:\xedo\winhance.pow" "https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/xedo/winhance.pow" >nul 2>&1
-:: Power plan made by Winhance
+curl -g -k -L -# -o "C:\xedo\OpenShellSetup.exe" "https://github.com/Open-Shell/Open-Shell-Menu/releases/download/v4.4.198/OpenShellSetup_4_4_198.exe" >nul 2>&1  
+:: Power plan made by Ivo Beltchev
 chcp 65001 >nul 2>&1
 timeout /t 3 /nobreak > NUL
 cls
@@ -406,16 +409,16 @@ echo.                             %p%██║  ██║███████�
 echo.                             %p%╚═╝  ╚═╝╚══════╝╚═════╝  ╚════╝  ╚═════╝ ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚═════╝ %u%
 echo.
 chcp 65001 >nul 2>&1
-%pt%echo. %w%- Baixando o Nvidia Profile Inspector... %g%(Parte dos recursos utilizados pela ferramenta. Você pode ver na
+%pt%echo. %w%- Baixando o Process Lasso... %g%(Parte dos recursos utilizados pela ferramenta. Você pode ver na
 %pt%echo. %g%- pasta C:\xedo, todos eles são arquivos confiáveis ​​usados ​​por milhares de pessoas) %u% 
-%en%echo. %w%- Downloading Nvidia Profile Inspector... %g%(Part of the Resources Used by the tool. You can find them in the
+%en%echo. %w%- Downloading Process Lasso... %g%(Part of the Resources Used by the tool. You can find them in the
 %en%echo. %g%- C:\xedo folder, they are all trusted files used by thousands of people) %u% 
 echo.
 echo [=============================55.0%                         ]
 echo.
 chcp 437 >nul 2>&1
-curl -g -k -L -# -o "C:\xedo\Nvidia_Porfile_Inspector_2.4.0.27.exe" "https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/xedo/Nvidia_Porfile_Inspector_2.4.0.27.exe" >nul 2>&1
-:: credit to Orbmu2k :: https://github.com/Orbmu2k/nvidiaProfileInspector/releases
+curl -g -k -L -# -o "C:\xedo\processlassosetup64.exe" "https://dl.bitsum.com/files/processlassosetup64.exe" >nul 2>&1
+:: credit to Bitsum :: https://bitsum.com/
 chcp 65001 >nul 2>&1
 timeout /t 3 /nobreak > NUL
 cls
@@ -435,19 +438,24 @@ echo.                             %p%██║  ██║███████�
 echo.                             %p%╚═╝  ╚═╝╚══════╝╚═════╝  ╚════╝  ╚═════╝ ╚═╝  ╚═╝ ╚════╝ ╚══════╝╚═════╝ %u%
 echo.
 chcp 65001 >nul 2>&1
-%pt%echo. %w%- Baixando Nvidia Profile Inspector Config... %g%(Parte dos recursos utilizados pela ferramenta. Você pode ver na
+%pt%echo. %w%- Baixando Process Lasso Profile... %g%(Parte dos recursos utilizados pela ferramenta. Você pode ver na
 %pt%echo. %g%- pasta C:\xedo, todos eles são arquivos confiáveis ​​usados ​​por milhares de pessoas)%u%
-%en%echo. %w%- Downloading Nvidia Profile Inspector Config... %g%(Part of the Resources Used by the tool. You can find them
+%en%echo. %w%- Downloading Process Lasso Profile... %g%(Part of the Resources Used by the tool. You can find them
 %en%echo. %g%- in the C:\xedo folder, they are all trusted files used by thousands of people)%u%
 echo.
 echo. [=============================99.9%=======================]
 echo.
 chcp 437 >nul 2>&1
-curl -g -k -L -# -o "C:\xedo\Free_NVPI_V10.nip" "https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/xedo/Free_NVPI_V10.nip" >nul 2>&1  
+curl -g -k -L -# -o "C:\xedo\prolasso.ini" "https://github.com/Xedo223/Xedo-Tweaks/raw/refs/heads/main/xedo/prolasso.ini" >nul 2>&1  
 chcp 65001 >nul 2>&1
 timeout 2 > nul
 chcp 437 >nul 2>&1
 curl -g -k -L -# -o "C:\SetTimerResolution.exe" "https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/xedo/SetTimerResolution.exe" >nul 2>&1  
+attrib +h "c:\SetTimerResolution.exe"
+chcp 65001 >nul 2>&1
+timeout /t 3 /nobreak > NUL
+chcp 437 >nul 2>&1
+curl -g -k -L -# -o "C:\xedo\winhance.pow" "https://raw.githubusercontent.com/Xedo223/Xedo-Tweaks/refs/heads/main/xedo/winhance.pow" >nul 2>&1
 chcp 65001 >nul 2>&1
 timeout /t 3 /nobreak > NUL
 cls
@@ -870,12 +878,17 @@ reg add "HKCU\Control Panel\Keyboard" /v "KeyboardSpeed" /t REG_SZ /d "31" /f
 timeout /t 1 /nobreak > nul
 
 echo.
-echo %a% Import Winhance Power Plan%u%
+echo %a%Istall Open Shell Menu%u%
+C:\xedo\OpenShellSetup.exe  /qn
+timeout /t 1 /nobreak > NUL
+
+echo.
+echo %a%Istall Process Lasso%u%
+"C:\xedo\processlassosetup64.exe" /S /importconfigfrom="C:\xedo\prolasso.ini"
 powercfg -import "C:\xedo\winhance.pow" 11111112-2223-3334-4445-555555555555
 timeout /t 1 /nobreak > nul
 powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 timeout /t 1 /nobreak > nul
-powercfg /setactive 11111112-2223-3334-4445-555555555555
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\75b0ae3f-bce0-45a7-8c89-c9611c25e100" /v Attributes /t REG_DWORD /d 2 /f
 timeout /t 1 /nobreak > nul
 %pt%REG ADD "HKLM\SOFTWARE\Classes\DesktopBackground\Shell\Xedo" /v "MUIVerb" /t REG_SZ /d "Plano De Energia" /f
